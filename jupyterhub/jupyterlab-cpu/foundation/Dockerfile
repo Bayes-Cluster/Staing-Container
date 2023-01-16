@@ -22,9 +22,9 @@ RUN apt-get update --yes && \
     locales \
     sudo \
     tini \
-    wget && \
-    proxychains4 && \
-    vim && \
+    wget \
+    proxychains4 \
+    vim \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen

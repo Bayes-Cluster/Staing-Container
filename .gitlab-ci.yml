@@ -13,4 +13,4 @@ before_script:
 
 build:
   stage: build
-  script: cd jupyterhub/jupyter-cpu && sudo make build-all
+  script: cd jupyterhub/jupyterlab-cpu && sudo make build-all

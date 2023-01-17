@@ -12,5 +12,5 @@ build:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
     - IMAGE_TAG=$CI_COMMIT_REF_SLUG
-    - cd jupyterhub/jupyterlab-cpu && docker build -f foundation/Dockerfile -t $CI_REGISTRY/bayes-cluster/foundation:$IMAGE_TAG ./foundation
-    - docker push $CI_REGISTRY/bayes-cluster/foundation:$IMAGE_TAG
+    - cd jupyterhub/jupyterlab-cpu && docker build -f foundation/Dockerfile -t $CI_REGISTRY/bayes-cluster/staging-container/foundation:$IMAGE_TAG ./foundation
+    - docker push $CI_REGISTRY/bayes-cluster/staging-container/foundation:$IMAGE_TAG

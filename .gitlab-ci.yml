@@ -5,9 +5,9 @@ services:
 build:
   stage: build
   only:
-  variables:
-    - $CI_COMMIT_MESSAGE =~ /build/
-    - $CI_COMMIT_TAG =~ /build/
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /build/
+      - $CI_COMMIT_TAG =~ /build/
   before_script:
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REIGSTRY_PASSWORD
   script:

@@ -2,7 +2,7 @@ image: docker
 services:
   - docker:dind
 
-build:
+cpu:
   stage: build
   only:
     variables:
@@ -12,5 +12,9 @@ build:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
     - IMAGE_TAG=$CI_COMMIT_REF_SLUG
-    - cd jupyterhub/jupyterlab-cpu && docker build -f foundation/Dockerfile -t $CI_REGISTRY/bayes-cluster/staging-container/foundation:$IMAGE_TAG ./foundation
+    - cd jupyterhub/jupyterlab-cpu && docker build -f $PACKAGE/Dockerfile -t $CI_REGISTRY/bayes-cluster/staging-container/$PACKAGE:$IMAGE_TAG ./$PACKAGE
     - docker push $CI_REGISTRY/bayes-cluster/staging-container/foundation:$IMAGE_TAG
+  parallel:
+    matrix:
+      - PACKAGE: [foundation, base-notebook, mini-notebook, scipy-notebook, datascience-notebook]
+    

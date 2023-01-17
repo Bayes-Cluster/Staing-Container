@@ -11,4 +11,4 @@ build:
   before_script:
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REIGSTRY_PASSWORD
   script:
-    - cd jupyterhub/jupyterlab-cpu && docker build -f foundation/Dockerfile -t bayes-cluster/foundation:$CI_CMMIT_TAG ./foundation && docker push
+    - cd jupyterhub/jupyterlab-cpu && docker build -f foundation/Dockerfile -t bayes-cluster/foundation:$CI_COMMIT_TAG ./foundation && docker push
